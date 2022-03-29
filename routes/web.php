@@ -22,7 +22,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+
 Route::get('/', [FrontController::class, 'index'])->name('home');
+Route::get('/redirects', [FrontController::class, 'redirects']);
+
 Auth::routes();
 
 
