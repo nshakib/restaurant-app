@@ -23,11 +23,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::get('/users', [AdminController::class, 'user'])->name('admin.users');
+Route::get('/foodmenu', [AdminController::class, 'foodmenu'])->name('admin.foodmenu');
+Route::post('/foodmenuAdd', [AdminController::class, 'foodmenuAdd'])->name('admin.foodmenuAdd');
+
+
 Route::post('/users/delete/{id}', [AdminController::class, 'deleteuser'])->name('admin.users.delete');
 
 
 
-Route::get('/redirects', [FrontController::class,'redirects']);
+Route::get('/redirects', [FrontController::class,'redirects'])->name('dashboard');
 Route::get('/user/home',[HomeController::class,'index'])->name('user.home');
 
 Auth::routes();
