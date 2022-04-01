@@ -228,9 +228,8 @@
             <div class="row">
               <div class="col-xl-12 col-sm-12">
                     <div>
-                        <form action="{{ route('admin.foodmenu') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.foodmenuAdd') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
                                 <input type="text" class="form-control" name="title" id=""  placeholder="Title">
@@ -251,6 +250,39 @@
                               <button type="submit" class="btn btn-outline-success">Save</button>
                         </form>
                     </div>
+              </div>
+              <div class="pt-5"></div>
+              <div class="col-xl-12 col-sm-12">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>SL</th>
+                      <th>Food Name</th>
+                      <th>Price</th>
+                      <th>Description</th>
+                      <th>Images</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($food as $foods )
+                    <tr>
+                      <td>{{ $loop->iteration }}</td>
+                      <td>{{ $foods->title }}</td>
+                      <td>{{ $foods->price }}</td>
+                      <td>{{ $foods->description }}</td>
+                      <td><img height="200" width="200" src="/foodimage/{{ $foods->image }}" alt=""></td>
+                      <td>
+                          <form method="POST" action="{{ route('admin.foodmenu.delete', [$foods->id]) }}">
+                            @csrf
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+                      </td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+                
               </div>
             </div>
           </div>

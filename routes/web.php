@@ -25,6 +25,7 @@ Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::get('/users', [AdminController::class, 'user'])->name('admin.users');
 Route::get('/foodmenu', [AdminController::class, 'foodmenu'])->name('admin.foodmenu');
 Route::post('/foodmenuAdd', [AdminController::class, 'foodmenuAdd'])->name('admin.foodmenuAdd');
+Route::post('/foodmenu/delete/{id}', [AdminController::class, 'foodmenuDelete'])->name('admin.foodmenu.delete');
 
 
 Route::post('/users/delete/{id}', [AdminController::class, 'deleteuser'])->name('admin.users.delete');

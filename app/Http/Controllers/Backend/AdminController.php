@@ -22,7 +22,8 @@ class AdminController extends Controller
     }
 
     public function foodmenu(){
-        return view('backend.admin.foodmenu');
+        $food = Food::all();
+        return view('backend.admin.foodmenu',compact('food'));
     }
 
     public function foodmenuAdd(Request $request){
@@ -38,5 +39,13 @@ class AdminController extends Controller
 
             $food->save();
             return redirect(route('admin.foodmenu'));
+    }
+
+    public function foodmenuDelete($id){
+        $food =Food::find($id);
+
+        $food->delete();
+
+        return redirect(route('admin.foodmenu'));
     }
 }
