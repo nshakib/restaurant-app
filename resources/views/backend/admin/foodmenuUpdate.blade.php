@@ -36,68 +36,33 @@
             <div class="row">
               <div class="col-xl-12 col-sm-12">
                     <div>
-                        <form action="{{ route('admin.foodmenuAdd') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.foodmenu.update', [$food->id]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-                            
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
-                                <input type="text" class="form-control" name="title" id=""  placeholder="Title">
+                                <input type="text" class="form-control" name="title" id=""  value="{{ $food->title }}" required>
                               </div>
                               <div class="mb-3">
                                 <label for="price" class="form-label">Price</label>
-                                <input type="num" class="form-control" name="price" id=""  placeholder="Price">
+                                <input type="num" class="form-control" name="price" id=""  value="{{ $food->price }}">
+                              </div>
+                              <div class="mb-3">
+                                <label for="image" class="form-label">Old Image</label>
+                                <img src="/foodimage/{{ $food->image }}" alt="">
                               </div>
                               <div class="mb-3">
                                 <label for="image" class="form-label">Image</label>
-                                <input type="file" class="form-control" name="image" id=""  placeholder="File">
+                                <input type="file" class="form-control" name="image" id=""  value="{{ $food->image }}">
                               </div>
                               <div class="mb-3">
                                 <label for="description" class="form-label">Description</label>
-                                <input type="text" class="form-control" name="description" id=""  placeholder="Description">
+                                <input type="text" class="form-control" name="description" id=""  value="{{ $food->description }}">
                               </div>
       
-                              <button type="submit" class="btn btn-outline-success">Save</button>
+                              <button type="submit" class="btn btn-outline-success">Update</button>
                         </form>
                     </div>
-              </div>
-              <div class="pt-5"></div>
-              <div class="col-xl-12 col-sm-12">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>SL</th>
-                      <th>Food Name</th>
-                      <th>Price</th>
-                      <th>Description</th>
-                      <th>Images</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @foreach ($food as $foods )
-                    <tr>
-                      <td>{{ $loop->iteration }}</td>
-                      <td>{{ $foods->title }}</td>
-                      <td>{{ $foods->price }}</td>
-                      <td>{{ $foods->description }}</td>
-                      <td><img height="200" width="200" src="/foodimage/{{ $foods->image }}" alt=""></td>
-                      
-                      <td>
-                        <a class="btn btn-success" style="float: left; transform: translateX(-10px);" 
-                        href="{{ route('admin.foodmenu.edit',[$foods->id]) }}">Edit</a>
-                          <div>
-                            <form method="POST" action="{{ url('admin.foodmenu.delete', [$foods->id]) }}">
-                              @csrf
-                              <button class="btn btn-danger" type="submit">Delete</button>
-                          </form>
-                          </div>
-                      </td>
-                    </tr>
-                    @endforeach
-                  </tbody>
-                </table>
-                
               </div>
             </div>
           </div>

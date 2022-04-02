@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Food;
+use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -47,5 +48,52 @@ class AdminController extends Controller
         $food->delete();
 
         return redirect(route('admin.foodmenu'));
+    }
+
+    public function foodmenuEdit($id){
+        $food =Food::find($id);
+
+        return view('backend.admin.foodmenuUpdate',compact('food'));
+    }
+
+    public function foodmenuUpdate(Request $request, $id){
+        $food =Food::find($id);
+        if($request->has('file')){
+            
+
+            $image = $request->image;
+            $imagename = time().'.'.$image->getClientOriginalExtension();
+            $request->image->move('foodimage',$imagename);
+            $food->image = $imagename;
+
+        }else if(!$request->has('file')){
+            $food->title = $request->title;
+            $food->price = $request->price;
+            $food->description = $request->description;
+        }else{
+            $image = $request->image;
+            $imagename = time().'.'.$image->getClientOriginalExtension();
+            $request->image->move('foodimage',$imagename);
+            $food->image = $imagename;
+        }
+            
+            $food->save();
+            return redirect(route('admin.foodmenu'));
+    }
+
+    public function reservation(Request $request){
+
+        $reservation = new Reservation();
+
+        $reservation->name = $request->name;
+        $reservation->email = $request->email;
+        $reservation->phone = $request->phone;
+        $reservation->guest = $request->guest;
+        $reservation->date = $request->date;
+        $reservation->time = $request->time;
+        $reservation->message = $request->message;
+
+        $reservation->save();
+        return redirect(route('admin.reservation'));
     }
 }
