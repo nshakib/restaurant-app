@@ -94,6 +94,6 @@ class AdminController extends Controller
         $reservation->message = $request->message;
 
         $reservation->save();
-        return redirect(route('admin.reservation'));
+        return redirect()->back();
     }
 }

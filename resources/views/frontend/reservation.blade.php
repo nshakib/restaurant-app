@@ -28,9 +28,9 @@
             </div>
             <div class="col-lg-6">
                 <div class="contact-form">
-                    <form  action="{{ route('admin.reservation') }}" method="POST" id="contact">
+                    <form  action="{{ route('admin.reservation') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
+
                       <div class="row">
                         <div class="col-lg-12">
                             <h4>Table Reservation</h4>
