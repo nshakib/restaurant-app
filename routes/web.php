@@ -35,6 +35,11 @@ Route::post('/users/delete/{id}', [AdminController::class, 'deleteuser'])->name(
 
 //reservation
 Route::post('/reservation', [AdminController::class, 'reservation'])->name('admin.reservation');
+Route::get('/reservation_show', [AdminController::class, 'reservation_show'])->name('admin.reservation_show');
+
+//checf
+Route::get('/checf_show', [AdminController::class, 'checf_show'])->name('admin.checf_show');
+Route::post('/checf_upload', [AdminController::class, 'checf_upload'])->name('admin.checf_upload');
 
 
 Route::get('/redirects', [FrontController::class,'redirects'])->name('dashboard');

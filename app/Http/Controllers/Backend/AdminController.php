@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Food;
+use App\Models\Foodchef;
 use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -95,5 +96,32 @@ class AdminController extends Controller
 
         $reservation->save();
         return redirect()->back();
+    }
+
+    public function reservation_show(){
+        $reservation = Reservation::all();
+
+        return view('backend.admin.adminreservation',compact('reservation'));
+    }
+
+    public function checf_show(){
+
+        return view('backend.admin.adminchecf');
+    }
+
+    public function checf_upload(Request $request){
+        
+        $checf = new Foodchef();
+
+        $image = $request->image;
+        $imagename = time().'.'.$image->getClientOriginalExtension();
+            $request->image->move('checfimage',$imagename);
+            $checf->image = $imagename;
+
+            $checf->name = $request->name;
+            $checf->speciality = $request->speciality;
+
+            $checf->save();
+            return redirect()->back();
     }
 }

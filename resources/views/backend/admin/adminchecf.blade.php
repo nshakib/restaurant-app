@@ -33,48 +33,68 @@
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
+            <div class="row">
               <div class="col-xl-12 col-sm-12">
+                    <div>
+                        <form action="{{ route('admin.checf_upload') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            {{-- @method('PUT') --}}
+                            
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" name="name" id=""  placeholder="Name">
+                              </div>
+                              <div class="mb-3">
+                                <label for="speciality" class="form-label">Speciality</label>
+                                <input type="text" class="form-control" name="speciality" id=""  placeholder="Speciality">
+                              </div>
+                              <div class="mb-3">
+                                <label for="image" class="form-label">Image</label>
+                                <input type="file" class="form-control" name="image" id=""  placeholder="image">
+                              </div>
+      
+                              <button type="submit" class="btn btn-outline-success">Save</button>
+                        </form>
+                    </div>
+              </div>
+              <div class="pt-5"></div>
+              {{-- <div class="col-xl-12 col-sm-12">
                 <table class="table">
                   <thead>
                     <tr>
                       <th>SL</th>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Phone</th>
-                      <th>Guest</th>
-                      <th>Date</th>
-                      <th>Time</th>
-                      <th>Message</th>
-                      {{-- <th>Action</th> --}}
+                      <th>Food Name</th>
+                      <th>Price</th>
+                      <th>Description</th>
+                      <th>Images</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($reservation as $reservations )
+                    @foreach ($food as $foods )
                     <tr>
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{ $reservations->name }}</td>
-                      <td>{{ $reservations->email }}</td>
-                      <td>{{ $reservations->phone }}</td>
-                      <td>{{ $reservations->guest }}</td>
-                      <td>{{ $reservations->date }}</td>
-                      <td>{{ $reservations->time }}</td>
-                      <td>{{ $reservations->message }}</td>
-                      {{-- <td>
+                      <td>{{ $foods->title }}</td>
+                      <td>{{ $foods->price }}</td>
+                      <td>{{ $foods->description }}</td>
+                      <td><img height="200" width="200" src="/foodimage/{{ $foods->image }}" alt=""></td>
+                      
+                      <td>
                         <a class="btn btn-success" style="float: left; transform: translateX(-10px);" 
-                        href="{{ route('admin.foodmenu.edit',[$reservations->id]) }}">Edit</a>
+                        href="{{ route('admin.foodmenu.edit',[$foods->id]) }}">Edit</a>
                           <div>
-                            <form method="POST" action="{{ url('admin.foodmenu.delete', [$reservations->id]) }}">
+                            <form method="POST" action="{{ url('admin.foodmenu.delete', [$foods->id]) }}">
                               @csrf
                               <button class="btn btn-danger" type="submit">Delete</button>
                           </form>
                           </div>
-                      </td> --}}
+                      </td>
                     </tr>
                     @endforeach
                   </tbody>
                 </table>
                 
-              </div>
+              </div> --}}
             </div>
           </div>
           <!-- content-wrapper ends -->
