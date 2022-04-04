@@ -117,19 +117,53 @@ class AdminController extends Controller
 
         $image = $request->image;
         $imagename = time().'.'.$image->getClientOriginalExtension();
-            $request->image->move('checfimage',$imagename);
-            $checf->image = $imagename;
+        $request->image->move('checfimage',$imagename);
+        $checf->image = $imagename;
 
-            $checf->name = $request->name;
-            $checf->speciality = $request->speciality;
+        $checf->name = $request->name;
+        $checf->speciality = $request->speciality;
 
-            $checf->save();
-            return redirect()->back();
+        $checf->save();
+        return redirect()->back();
     }
 
-    public function checf_update($id){
+    public function checf_edit($id){
+
         $checf = Foodchef::find($id);
 
         return view('backend.admin.updatechef',compact('checf'));
+    }
+
+    public function checf_update(Request $request, $id){
+
+        $checf =Foodchef::find($id);
+
+        
+        if($request->has('image')){
+            $image = $request->image;
+            $imagename = time().'.'.$image->getClientOriginalExtension();
+            $request->image->move('checfimage',$imagename);
+            $checf->image = $imagename;
+        }
+        
+        else if (!$request->has('image')){
+            $checf->name = $request->name;
+            $checf->speciality = $request->speciality;
+        }else{
+            $image = $request->image;
+            $imagename = time().'.'.$image->getClientOriginalExtension();
+            $request->image->move('checfimage',$imagename);
+            $checf->image = $imagename;
+        }
+            
+            $checf->save();
+            return redirect()->route('admin.checf_show');
+    }
+
+
+    public function checf_delete($id){
+        $checf =Foodchef::find($id);
+        $checf->delete();
+        return redirect()->route('admin.checf_show');
     }
 }

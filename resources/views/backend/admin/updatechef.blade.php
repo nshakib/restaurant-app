@@ -36,24 +36,28 @@
             <div class="row">
               <div class="col-xl-12 col-sm-12">
                     <div>
-                        <form action="{{  }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.checf_update', [$checf->id]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            {{-- @method('PUT') --}}
+                            @method('PUT')
                             
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" name="name" id=""  placeholder="Name">
+                                <input type="text" class="form-control" name="name" id=""  value="{{ $checf->name }}">
                               </div>
                               <div class="mb-3">
                                 <label for="speciality" class="form-label">Speciality</label>
-                                <input type="text" class="form-control" name="speciality" id=""  placeholder="Speciality">
+                                <input type="text" class="form-control" name="speciality" id=""  value="{{ $checf->speciality }}">
                               </div>
                               <div class="mb-3">
-                                <label for="image" class="form-label">Image</label>
-                                <input type="file" class="form-control" name="image" id=""  placeholder="image">
+                                <label for="image" class="form-label">Old Image</label>
+                                <img height="200px" width="200px" src="/checfimage/{{ $checf->image }}"  alt="">
+                              </div>
+                              <div class="mb-3">
+                                <label for="image" class="form-label">New Image</label>
+                                <input type="file" class="form-control" name="image" value="{{ $checf->image }}">
                               </div>
       
-                              <button type="submit" class="btn btn-outline-success">Save</button>
+                              <button type="submit" class="btn btn-outline-success">Update</button>
                         </form>
                     </div>
                 </div>

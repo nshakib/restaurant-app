@@ -79,9 +79,9 @@
                       
                       <td>
                         <a class="btn btn-success" style="float: left; transform: translateX(-10px);" 
-                        href="{{ route('admin.checf_update',[$checfs->id]) }}">Edit</a>
+                        href="{{ route('admin.checf_edit',[$checfs->id]) }}">Edit</a>
                           <div>
-                            <form method="POST" action="{{ url('admin.checfmenu.delete', [$checfs->id]) }}">
+                            <form method="POST" action="{{ route('admin.checf_delete', [$checfs->id]) }}">
                               @csrf
                               <button class="btn btn-danger" type="submit">Delete</button>
                           </form>
