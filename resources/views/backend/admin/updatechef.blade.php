@@ -36,7 +36,7 @@
             <div class="row">
               <div class="col-xl-12 col-sm-12">
                     <div>
-                        <form action="{{ route('admin.checf_upload') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{  }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             {{-- @method('PUT') --}}
                             
@@ -56,41 +56,7 @@
                               <button type="submit" class="btn btn-outline-success">Save</button>
                         </form>
                     </div>
-              </div>
-              <div class="pt-5"></div>
-              <div class="col-xl-12 col-sm-12">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>SL</th>
-                      <th>Name</th>
-                      <th>Speciality</th>
-                      <th>Image</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @foreach ($checf as $checfs )
-                    <tr>
-                      <td>{{ $loop->iteration }}</td>
-                      <td>{{ $checfs->name }}</td>
-                      <td>{{ $checfs->speciality }}</td>
-                      <td><img height="200" width="200" src="/checfimage/{{ $checfs->image }}" alt=""></td>
-                      
-                      <td>
-                        <a class="btn btn-success" style="float: left; transform: translateX(-10px);" 
-                        href="{{ route('admin.checf_update',[$checfs->id]) }}">Edit</a>
-                          <div>
-                            <form method="POST" action="{{ url('admin.checfmenu.delete', [$checfs->id]) }}">
-                              @csrf
-                              <button class="btn btn-danger" type="submit">Delete</button>
-                          </form>
-                          </div>
-                      </td>
-                    </tr>
-                    @endforeach
-                  </tbody>
-                </table>
+                </div>
                 
               </div>
             </div>

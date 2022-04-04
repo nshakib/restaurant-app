@@ -106,7 +106,9 @@ class AdminController extends Controller
 
     public function checf_show(){
 
-        return view('backend.admin.adminchecf');
+        $checf = Foodchef::all();
+
+        return view('backend.admin.adminchecf',compact('checf'));
     }
 
     public function checf_upload(Request $request){
@@ -123,5 +125,11 @@ class AdminController extends Controller
 
             $checf->save();
             return redirect()->back();
+    }
+
+    public function checf_update($id){
+        $checf = Foodchef::find($id);
+
+        return view('backend.admin.updatechef',compact('checf'));
     }
 }

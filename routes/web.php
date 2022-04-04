@@ -40,6 +40,7 @@ Route::get('/reservation_show', [AdminController::class, 'reservation_show'])->n
 //checf
 Route::get('/checf_show', [AdminController::class, 'checf_show'])->name('admin.checf_show');
 Route::post('/checf_upload', [AdminController::class, 'checf_upload'])->name('admin.checf_upload');
+Route::post('/checf_update/{id}', [AdminController::class, 'checf_update'])->name('admin.checf_update');
 
 
 Route::get('/redirects', [FrontController::class,'redirects'])->name('dashboard');
