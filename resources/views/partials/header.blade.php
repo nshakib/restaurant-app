@@ -36,6 +36,22 @@
                             </ul>
                         </li>
                         <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li>
+
+
+                        <li class="scroll-to-section"><a href="#reservation"> 
+                            @auth
+                               <a href="{{ route('user.show_cart', Auth::user()->id )}}"><i data-count="{{  $count  }}" class="fa fa-shopping-cart fa-2x fa-border icon-grey badge">
+                                </i></a>
+
+                                
+                            @endauth
+
+                            @guest
+                            <i data-count="0" class="fa fa-shopping-cart fa-2x fa-border icon-grey badge">
+                            </i>
+                            @endguest
+                            
+                        </a></li>
                         <!-- Authentication Links -->
                         @include('partials.auth')
                     </ul>        

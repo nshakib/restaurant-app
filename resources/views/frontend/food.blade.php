@@ -13,20 +13,38 @@
         <div class="col-lg-12">
             <div class="owl-menu-item owl-carousel">
                 @foreach ($food as $foods)
+                <form action="{{ route('admin.addcart', $foods->id) }}" method="POST">
+                    @csrf
                     <div class="item">
                         <div style="background-image: url('foodimage/{{ $foods->image }}')" class='card'>
-                            <div class="price"><h6>${{ $foods->price }}</h6></div>
-                            <div class='info'>
-                            <h1 class='title'>{{ $foods->title }}</h1>
-                            <p class='description'>{{ $foods->description }}</p>
-                            <div class="main-text-button">
-                                <div class="scroll-to-section"><a href="#reservation">Make Reservation <i class="fa fa-angle-down"></i></a></div>
+                            <div class="price">
+                                <h6>${{ $foods->price }}</h6>
                             </div>
+                            <div class='info'>
+                                <h1 class='title'>{{ $foods->title }}</h1>
+                                <p class='description'>{{ $foods->description }}</p>
+                                <div class="main-text-button">
+                                    <div class="scroll-to-section"><a href="#reservation">Make Reservation <i
+                                        class="fa fa-angle-down"></i></a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="number" class="form-control" name="quantity" value="1" min="1">
+                            </div>
+                           <div class="col">
+                            <input type="submit" class="btn btn-success" value="Add Cart">
+                           </div>
+                        </div>
                     </div>
+                </form>
                 @endforeach
             </div>
         </div>
     </div>
 </section>
+
+
+

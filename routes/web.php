@@ -45,6 +45,10 @@ Route::put('/checf_update/{id}', [AdminController::class, 'checf_update'])->name
 Route::post('/checf_delete/{id}', [AdminController::class, 'checf_delete'])->name('admin.checf_delete');
 
 
+//cart
+Route::post('/addcart/{id}', [FrontController::class, 'addcart'])->name('admin.addcart');
+Route::get('/show_cart', [FrontController::class, 'show_cart'])->name('user.show_cart');
+
 Route::get('/redirects', [FrontController::class,'redirects'])->name('dashboard');
 Route::get('/user/home',[HomeController::class,'index'])->name('user.home');
 
