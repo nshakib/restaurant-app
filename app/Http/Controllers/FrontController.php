@@ -11,10 +11,12 @@ use Illuminate\Support\Facades\Auth;
 class FrontController extends Controller
 {
     public function index(){
+        $user_id = Auth::id();
+        $count = Cart::where('user_id', $user_id)->count();
         $food = Food::all();
-
         $checf = Foodchef::all();
-        return view('frontend.index',compact('food','checf'));
+        
+        return view('frontend.index',compact('food','checf','count'));
     }
 
     public function redirects(){
@@ -56,9 +58,10 @@ class FrontController extends Controller
         }
     }
 
-    public function show_cart(Request $request, $id){
+    public function show_cart(Request $request,$id){
 
-        $count = Cart::where('user_id', $id)->count();
-        return view('frontend.showcart',compact('count'));
+        $count = cart::where('user_id', $id)->count();
+        $cart = cart::where('user_id',$id)->join('food','carts.food_id','=','food.id')->get();
+        return view('frontend.showcart',compact('count','cart'));
     }
 }

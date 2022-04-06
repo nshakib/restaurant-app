@@ -47,7 +47,7 @@ Route::post('/checf_delete/{id}', [AdminController::class, 'checf_delete'])->nam
 
 //cart
 Route::post('/addcart/{id}', [FrontController::class, 'addcart'])->name('admin.addcart');
-Route::get('/show_cart', [FrontController::class, 'show_cart'])->name('user.show_cart');
+Route::get('/show_cart/{id}', [FrontController::class, 'show_cart'])->name('show_cart');
 
 Route::get('/redirects', [FrontController::class,'redirects'])->name('dashboard');
 Route::get('/user/home',[HomeController::class,'index'])->name('user.home');

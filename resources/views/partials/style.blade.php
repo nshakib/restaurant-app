@@ -30,10 +30,10 @@ i {
   content: attr(data-count);
   position: absolute;
   background: #ff6600;
-  height: 1.5rem;
+  height: 1.25rem;
   top: 0.5rem;
   right: 1.5rem;
-  width: 1.5rem;
+  width: 1.25rem;
   text-align: center;
   line-height: 2rem;
   font-size: 1rem;

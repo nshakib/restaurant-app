@@ -1,12 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Show Cart</h1>
-</body>
-</html>
+@extends('layouts.app')
+
+@section('content')
+
+<div id="top">
+    <div class="row">
+        <div class="col-md-8 offset-2 pt-5">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Food Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($cart as $carts)
+                    <tr>
+                        <td>{{ $carts->title }}</td>
+                        <td>{{ $carts->price }}</td>
+                        <td>{{ $carts->quantity }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@endsection

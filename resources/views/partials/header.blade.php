@@ -5,7 +5,7 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
+                    <a href="{{ route('home') }}" class="logo">
                         <img src="{{asset('images/klassy-logo.png')}}" align="klassy cafe html template">
                     </a>
                     <!-- ***** Logo End ***** -->
@@ -39,11 +39,10 @@
 
 
                         <li class="scroll-to-section"><a href="#reservation"> 
-                            @auth
-                               <a href="{{ route('user.show_cart', Auth::user()->id )}}"><i data-count="{{  $count  }}" class="fa fa-shopping-cart fa-2x fa-border icon-grey badge">
-                                </i></a>
 
-                                
+                            @auth
+                               <a href="{{ route('show_cart', Auth::user()->id )}}"><i data-count="{{ $count }}" class="fa fa-shopping-cart fa-2x fa-border icon-grey badge">
+                                </i></a>
                             @endauth
 
                             @guest
